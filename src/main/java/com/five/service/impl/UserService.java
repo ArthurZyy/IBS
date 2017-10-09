@@ -19,4 +19,10 @@ public class UserService implements IUserService {
         return this.userDao.selectByPrimaryKey(userId);
     }
 
+	@Override
+	public User login(User user) {
+		// TODO Auto-generated method stub
+		return this.userDao.selectByUsernameAndPassword(user);
+	}
+
 }
