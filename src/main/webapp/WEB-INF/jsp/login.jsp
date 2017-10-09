@@ -4,8 +4,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>测试</title>
+<title>登录</title>
 </head>
-<body>${user.userName}
+<body>
+<form action="<%=request.getContextPath()%>/login.do" method="post">  
+        用户名：<input type="text" name="name">  
+        密码：<input type="password" name="password">  
+       <input type="submit" value="登录">  
+</form> 
 </body>
 </html>

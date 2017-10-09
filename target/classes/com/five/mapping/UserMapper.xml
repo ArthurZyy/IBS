@@ -19,7 +19,7 @@
     from t_user
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <select id="selectByUsernameAndPassword" resultMap="BaseResultMap" parameterType="com.jsx.model.User" >  
+  <select id="selectByUsernameAndPassword" resultMap="BaseResultMap" parameterType="com.five.pojo.User" >  
     select * from t_user  
     where name = #{name} and password = #{password}  
   </select> 
