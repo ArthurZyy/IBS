@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: 君行天下
-  Date: 2017/7/31
-  Time: 8:09
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -96,8 +90,10 @@
                     }
                     $("#lendbook").submit(function () {
                         if($("#name").val()==''||$("#readerId").val()==''){
-                            alert("请填入完整图书信息！");
+                            alert("请填入完整借阅信息！");
                             return mySubmit(false);
+                        }else{
+                        	
                         }
                     })
                 </script>
