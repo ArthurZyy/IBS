@@ -7,7 +7,7 @@
 <html lang="zh-CN" class="ax-vertical-centered">
 <head>
 	<meta charset="UTF-8">
-	<title>图书馆管理系统</title>
+	<title>图书租赁系统</title>
 	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
@@ -39,7 +39,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="collapse navbar-collapse main-navbar-collapse">
-                        <a class="navbar-brand" href="${pageContext.request.contextPath}/admin/admin.jsp"><strong>欢迎使用图书馆管理系统</strong></a>
+                        <a class="navbar-brand" href="${pageContext.request.contextPath}/admin/admin.jsp"><strong>图书租赁系统</strong></a>
                         <ul class="nav navbar-nav navbar-right">
                             <li class="dropdown">
                                 <a href="#" role="button" class="dropdown-toggle" data-hover="dropdown"> <i class="glyphicon glyphicon-user"></i> 欢迎您， <s:property value="#session.admin.name"/> <i class="caret"></i></a>

@@ -34,7 +34,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="collapse navbar-collapse main-navbar-collapse">
-                        <a class="navbar-brand" href="${pageContext.request.contextPath}/admin/admin.jsp"><strong>欢迎使用图书租赁系统</strong></a>
+                        <a class="navbar-brand" href="${pageContext.request.contextPath}/admin/admin.jsp"><strong>图书租赁系统</strong></a>
                         <ul class="nav navbar-nav navbar-right">
                             <li class="dropdown">
                                 <a href="#" role="button" class="dropdown-toggle" data-hover="dropdown"> <i class="glyphicon glyphicon-user"></i> 欢迎您， <s:property value="#session.admin.name"/> <i class="caret"></i></a>

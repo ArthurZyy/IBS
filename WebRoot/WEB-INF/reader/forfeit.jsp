@@ -7,7 +7,7 @@
 <html lang="zh-CN" class="ax-vertical-centered">
 <head>
 	<meta charset="UTF-8">
-	<title>图书馆管理系统</title>
+	<title>图书租赁系统</title>
 	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
@@ -38,7 +38,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="collapse navbar-collapse main-navbar-collapse">
-                        <a class="navbar-brand" href="${pageContext.request.contextPath}/reader.jsp"><strong>欢迎使用图书馆管理系统</strong></a>
+                        <a class="navbar-brand" href="${pageContext.request.contextPath}/reader.jsp"><strong>图书租赁系统</strong></a>
                         <ul class="nav navbar-nav navbar-right">
                           <s:if test="#session.reader!=null"><!-- 判断是否已经登录 -->
                             <li class="dropdown">
