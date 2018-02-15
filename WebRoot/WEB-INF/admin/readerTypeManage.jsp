@@ -72,14 +72,14 @@
                         <a href="${pageContext.request.contextPath}/admin/bookTypeManageAction_findBookTypeByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 图书分类管理</a>
                     </li>
                     <li >
-                        <a href="${pageContext.request.contextPath}/admin/borrowManageAction_findBorrowInfoByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 图书借阅</a>
+                        <a href="${pageContext.request.contextPath}/admin/borrowManageAction_findBorrowInfoByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 图书租赁</a>
                     </li>
                     <li>
                         <a href="${pageContext.request.contextPath}/admin/backManageAction_findBackInfoByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 图书归还</a>
                     </li>
                     
                     <li>
-                        <a href="${pageContext.request.contextPath}/admin/borrowSearchAction_findBackInfoByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 借阅查询</a>
+                        <a href="${pageContext.request.contextPath}/admin/borrowSearchAction_findBackInfoByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 租赁查询</a>
                     </li>
                      <li>
                         <a href="${pageContext.request.contextPath}/admin/forfeitManageAction_findForfeitInfoByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 逾期处理</a>
@@ -122,8 +122,8 @@
                             <thead>
                             <tr>
                                 <th>读者类型</th>
-                                <th>最大借阅数量</th>
-                                <th>可借阅天数</th>
+                                <th>最大租赁数量</th>
+                                <th>可租赁天数</th>
                                 <th>逾期每日罚金</th>
                                 <th>可续借天数</th>
                                 <th>操作</th>
@@ -201,9 +201,9 @@
 										</div>
 											
 										<div class="form-group">	
-											<label for="firstname" class="col-sm-3 control-label">最大借阅数量</label>
+											<label for="firstname" class="col-sm-3 control-label">最大租赁数量</label>
 												<div class="col-sm-7">
-													<input type="text" class="form-control" id="maxNum" placeholder="请输入最大借阅数量">
+													<input type="text" class="form-control" id="maxNum" placeholder="请输入最大租赁数量">
 												<label class="control-label" for="maxNum" style="display: none;"></label>	
 												</div>
 										</div>
@@ -212,9 +212,9 @@
 										
 										
 										<div class="form-group">	
-											<label for="firstname" class="col-sm-3 control-label">最大借阅天数</label>
+											<label for="firstname" class="col-sm-3 control-label">最大租赁天数</label>
 												<div class="col-sm-7">
-													<input type="text" class="form-control" id="bday" placeholder="请输入最大借阅天数">
+													<input type="text" class="form-control" id="bday" placeholder="请输入最大租赁天数">
 												<label class="control-label" for="bday" style="display: none;"></label>	
 												</div>
 										</div>
@@ -442,9 +442,9 @@
 										</div>
 											
 										<div class="form-group">	
-											<label for="firstname" class="col-sm-3 control-label">最大借阅书量</label>
+											<label for="firstname" class="col-sm-3 control-label">最大租赁书量</label>
 											<div class="col-sm-7">
-												<input type="text" class="form-control" id="addMaxNum"  placeholder="请输入最大借阅书量">
+												<input type="text" class="form-control" id="addMaxNum"  placeholder="请输入最大租赁书量">
 											<label class="control-label" for="addMaxNum" style="display: none;"></label>	
 											</div>
 										</div>
@@ -468,7 +468,7 @@
 										<div class="form-group">	
 											<label for="firstname" class="col-sm-3 control-label">续借天数</label>
 												<div class="col-sm-7">
-													<input type="text" class="form-control" id="addrenewDays"  placeholder="请输入逾期每日罚金">
+													<input type="text" class="form-control" id="addrenewDays"  placeholder="请输入续借天数">
 												<label class="control-label" for="addrenewDays" style="display: none;"></label>	
 												</div>
 										</div>

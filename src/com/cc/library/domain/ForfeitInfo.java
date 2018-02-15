@@ -9,7 +9,7 @@ import java.io.Serializable;
  */
 public class ForfeitInfo implements Serializable{
 	
-	private Integer borrowId;	//借阅编号
+	private Integer borrowId;	//租赁编号
 	private BorrowInfo borrowInfo;
 	private Admin admin;	//操作员
 	private Double forfeit;	//罚金金额

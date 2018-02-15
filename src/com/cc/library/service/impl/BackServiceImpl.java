@@ -71,11 +71,11 @@ public class BackServiceImpl implements BackService{
 	public int addBackInfo(BackInfo backInfo) {
 		//还书的步骤
 		/*
-		 * 1. 获得操作的借阅编号
+		 * 1. 获得操作的租赁编号
 		 * 
 		 * 2. 获得当前的管理员
 		 * 
-		 * 3. 获得借阅的书籍
+		 * 3. 获得租赁的书籍
 		 * 		3.1 书籍的在馆数量增加
 		 * 
 		 * 
@@ -86,23 +86,23 @@ public class BackServiceImpl implements BackService{
 		 * 6. 设置归还时间
 		 * 
 		 * 
-		 * 7. 设置借阅的状态
-		 * 		7.1 如果当前借阅不属于续借，则设置为归还
-		 * 		7.2 如果当前借阅属于续借,则设置为续借归还
+		 * 7. 设置租赁的状态
+		 * 		7.1 如果当前租赁不属于续借，则设置为归还
+		 * 		7.2 如果当前租赁属于续借,则设置为续借归还
 		 * 
-		 * 8. 查看该借阅记录有逾期罚金未缴纳的记录
+		 * 8. 查看该租赁记录有逾期罚金未缴纳的记录
 		 * 		8.1 如果有，返回状态码2,提示读者去缴费
 		 *		8.2 如果没有,则结束
 		 * 
 		 * 
 		 * 
 		 */
-		BorrowInfo borrowInfoById = borrowDao.getBorrowInfoById(backInfo.getBorrowInfo());//获得操作的借阅编号
+		BorrowInfo borrowInfoById = borrowDao.getBorrowInfoById(backInfo.getBorrowInfo());//获得操作的租赁编号
 		if(borrowInfoById.getState()==2 || borrowInfoById.getState()==5){//如果已经归还了。
 			return -1;//该书已还
 		}
 		Book book = borrowInfoById.getBook();
-		Book bookById = bookDao.getBookById(book);//获得借阅的书籍
+		Book bookById = bookDao.getBookById(book);//获得租赁的书籍
 		bookById.setCurrentNum(bookById.getCurrentNum()+1);
 		Book b = bookDao.updateBookInfo(bookById);// 书籍的在馆数量增加
 		Date backDate = new Date(System.currentTimeMillis());//获取当前时间
@@ -115,10 +115,10 @@ public class BackServiceImpl implements BackService{
 			 ba = backDao.updateBackInfo(backInfoById);//修改归还记录
 		}
 		if(borrowInfoById.getState()==0 || borrowInfoById.getState()==1){
-			borrowInfoById.setState(2);//设置借阅的状态
+			borrowInfoById.setState(2);//设置租赁的状态
 		}
 		if(borrowInfoById.getState()==3 || borrowInfoById.getState()==4){
-			borrowInfoById.setState(5);//设置借阅的状态
+			borrowInfoById.setState(5);//设置租赁的状态
 		}
 		BorrowInfo bi = null;
 		if(ba!=null){

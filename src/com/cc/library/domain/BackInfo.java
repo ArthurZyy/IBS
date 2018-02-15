@@ -3,7 +3,7 @@ package com.cc.library.domain;
 import java.util.Date;
 
 public class BackInfo {
-	private Integer borrowId;	//借阅编号
+	private Integer borrowId;	//租赁编号
 	private BorrowInfo borrowInfo;
 	private Admin admin;	//操作员
 	private Date backDate;	//归还时间

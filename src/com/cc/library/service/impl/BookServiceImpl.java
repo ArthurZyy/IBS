@@ -103,13 +103,13 @@ public class BookServiceImpl implements BookService{
 	public int deleteBook(Book book) {
 		// TODO Auto-generated method stub
 		//删除图书需要注意的事项：如果该书有尚未归还的记录或者尚未缴纳的罚款记录,则不能删除
-		//得到该书的借阅记录
+		//得到该书的租赁记录
 		List<BorrowInfo> borrowInfos = borrowDao.getBorrowInfoByBook(book);
 		for (BorrowInfo borrowInfo : borrowInfos) {
 			if(!(borrowInfo.getState()==2 || borrowInfo.getState()==5)){
-				return -1;//该书还在借阅中,无法删除
+				return -1;//该书还在租赁中,无法删除
 			}
-			//得到该借阅记录的罚金信息
+			//得到该租赁记录的罚金信息
 			ForfeitInfo forfeitInfo = new ForfeitInfo();
 			forfeitInfo.setBorrowId(borrowInfo.getBorrowId());
 			ForfeitInfo forfeitInfoById = forfeitDao.getForfeitInfoById(forfeitInfo);

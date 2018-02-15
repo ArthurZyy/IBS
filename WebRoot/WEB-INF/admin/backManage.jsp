@@ -72,14 +72,14 @@
                         <a href="${pageContext.request.contextPath}/admin/bookTypeManageAction_findBookTypeByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 图书分类管理</a>
                     </li>
                     <li>
-                        <a href="${pageContext.request.contextPath}/admin/borrowManageAction_findBorrowInfoByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 图书借阅</a>
+                        <a href="${pageContext.request.contextPath}/admin/borrowManageAction_findBorrowInfoByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 图书租赁</a>
                     </li>
                     <li class="active">
                         <a href="${pageContext.request.contextPath}/admin/backManageAction_findBackInfoByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 图书归还</a>
                     </li>
                     
                     <li>
-                        <a href="${pageContext.request.contextPath}/admin/borrowSearchAction_findBackInfoByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 借阅查询</a>
+                        <a href="${pageContext.request.contextPath}/admin/borrowSearchAction_findBackInfoByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 租赁查询</a>
                     </li>
                      <li>
                         <a href="${pageContext.request.contextPath}/admin/forfeitManageAction_findForfeitInfoByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 逾期处理</a>
@@ -110,9 +110,9 @@
                             <form class="form-horizontal" action="${pageContext.request.contextPath}/admin/backManageAction_queryBackInfo.action" method="post">
                                 <div class="row">
                                 <div class="col-lg-5 form-group">
-                                        <label class="col-lg-4 control-label" for="borrow_sno"><label class="text-danger"></label>借阅编号</label>
+                                        <label class="col-lg-4 control-label" for="borrow_sno"><label class="text-danger"></label>租赁编号</label>
                                         <div class="col-lg-8">
-                                            <input class="form-control"  name="borrowId" type="text" value="" placeholder="请输入借阅编号">
+                                            <input class="form-control"  name="borrowId" type="text" value="" placeholder="请输入租赁编号">
                                             <label class="control-label" for="borrow_sno" style="display: none"></label>
                                         </div>
                                     </div>
@@ -147,7 +147,7 @@
                         <table id="data_list" class="table table-hover table-bordered" cellspacing="0" width="100%">
                             <thead>
                             <tr>
-                            	 <th>借阅编号</th>
+                            	 <th>租赁编号</th>
                                 <th>图书ISBN号</th>
 	                            <th>图书名称</th>
 	                            <th>读者证件号</th>
@@ -284,7 +284,7 @@
 												
 										<!---------------------表单-------------------->
 										 <div class="form-group">
-											<label for="firstname" class="col-sm-3 control-label">借阅编号</label>
+											<label for="firstname" class="col-sm-3 control-label">租赁编号</label>
 												<div class="col-sm-7">
 													<input type="text" class="form-control" id="borrowId"  readonly="readonly">
 												
@@ -292,7 +292,7 @@
 										</div>
 											
 										<div class="form-group">	
-											<label for="firstname" class="col-sm-3 control-label">借阅书籍ISBN号</label>
+											<label for="firstname" class="col-sm-3 control-label">租赁书籍ISBN号</label>
 											<div class="col-sm-7">
 												<input type="text" class="form-control" id="ISBN"  readonly="readonly">
 
@@ -300,14 +300,14 @@
 										</div>
 											
 										<div class="form-group">	
-											<label for="firstname" class="col-sm-3 control-label">借阅书籍名称</label>
+											<label for="firstname" class="col-sm-3 control-label">租赁书籍名称</label>
 												<div class="col-sm-7">
 													<input type="text" class="form-control" id="bookName"  readonly="readonly">
 												
 												</div>
 										</div>
 										<div class="form-group">	
-											<label for="firstname" class="col-sm-3 control-label">借阅书籍类型</label>
+											<label for="firstname" class="col-sm-3 control-label">租赁书籍类型</label>
 												<div class="col-sm-7">
 													<input type="text" class="form-control" id="bookType"  readonly="readonly">
 												

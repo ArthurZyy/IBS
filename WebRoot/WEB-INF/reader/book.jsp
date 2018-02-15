@@ -78,7 +78,7 @@
                 </li>
                 <s:if test="#session.reader!=null"><!-- 判断是否登录 -->
 	                <li>
-	                    <a href="${pageContext.request.contextPath}/reader/borrowAction_findMyBorrowInfoByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 借阅信息</a>
+	                    <a href="${pageContext.request.contextPath}/reader/borrowAction_findMyBorrowInfoByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 租赁信息</a>
 	                </li>
                 </s:if>
                 

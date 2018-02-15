@@ -20,7 +20,7 @@ public class Reader implements Serializable{
     private Admin admin;	//操作管理员
     private String paperNO;	//证件号码
 	private Date createTime;	//创建时间
-	private Set<BorrowInfo> borrowInfos;	//该读者的借阅信息
+	private Set<BorrowInfo> borrowInfos;	//该读者的租赁信息
 
 
 

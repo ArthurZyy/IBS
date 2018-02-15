@@ -105,14 +105,14 @@ public class ReaderServiceImpl implements ReaderService{
 	@Override
 	public int deleteReader(Reader reader) {
 		//删除读者需要注意的点：如果该读者有尚未归还的书籍或者尚未缴纳的罚款,则不能删除
-		//得到该读者的借阅集合
+		//得到该读者的租赁集合
 		Reader readerById = readerDao.getReaderById(reader);
 		Set<BorrowInfo> borrowInfos = readerById.getBorrowInfos();
 		for (BorrowInfo borrowInfo : borrowInfos) {
 			if(!(borrowInfo.getState()==2 || borrowInfo.getState()==5)){
 				return -1;//有尚未归还的书籍
 			}
-			//得到该借阅记录的罚金信息
+			//得到该租赁记录的罚金信息
 			ForfeitInfo forfeitInfo = new ForfeitInfo();
 			forfeitInfo.setBorrowId(borrowInfo.getBorrowId());
 			ForfeitInfo forfeitInfoById = forfeitDao.getForfeitInfoById(forfeitInfo);

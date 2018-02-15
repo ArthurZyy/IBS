@@ -132,15 +132,15 @@ public class BackManageAction extends ActionSupport{
 	public String backBook(){
 		//还书的步骤
 		/*
-		 * 1. 获得操作的借阅编号
+		 * 1. 获得操作的租赁编号
 		 * 2. 获得当前的管理员
-		 * 3. 获得借阅的书籍
+		 * 3. 获得租赁的书籍
 		 * 		3.1 书籍的在馆数量增加
 		 * 4. 获取当前时间
 		 * 5. 设置操作管理员
 		 * 6. 设置归还时间
 		 * 7. 设置归还的状态
-		 * 8. 设置借阅的状态 
+		 * 8. 设置租赁的状态 
 		 */
 		Admin admin = (Admin) ServletActionContext.getContext().getSession().get("admin");
 		BackInfo backInfo = new BackInfo();

@@ -69,7 +69,7 @@
                 </li>
                 <s:if test="#session.reader!=null"><!-- 判断是否登录 -->
 	                <li>
-	                    <a href="${pageContext.request.contextPath}/reader/borrowAction_findMyBorrowInfoByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 借阅信息</a>
+	                    <a href="${pageContext.request.contextPath}/reader/borrowAction_findMyBorrowInfoByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 租赁信息</a>
 	                </li>
                 </s:if>
                 <s:if test="#session.reader!=null"><!-- 判断是否登录 -->
@@ -105,12 +105,12 @@
                 <div class="col-md-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <div class="text-muted bootstrap-admin-box-title">借阅信息</div>
+                            <div class="text-muted bootstrap-admin-box-title">租赁信息</div>
                         </div>
                         <div class="bootstrap-admin-panel-content">
                             <ul>
-                                <li>根据借阅编号、图书名称查询自己借阅的图书信息</li>
-                                <li>可查询除图书的基本信息、借阅日期、截止还书日期、超期天数等</li>
+                                <li>根据租赁编号、图书名称查询自己租赁的图书信息</li>
+                                <li>可查询除图书的基本信息、租赁日期、截止还书日期、超期天数等</li>
                             </ul>
                         </div>
                     </div>
@@ -128,8 +128,8 @@
                         </div>
                         <div class="bootstrap-admin-panel-content">
                             <ul>
-                                <li>根据借阅编号、图书名称查询自己借阅的图书信息</li>
-                                <li>可查询除图书的基本信息、借阅日期、归还时期、超期天数、需缴纳的罚金等</li>
+                                <li>根据租赁编号、图书名称查询自己租赁的图书信息</li>
+                                <li>可查询除图书的基本信息、租赁日期、归还时期、超期天数、需缴纳的罚金等</li>
                             </ul>
                         </div>
                     </div>

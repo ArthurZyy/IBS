@@ -78,10 +78,10 @@ public class ForfeitServiceImpl implements ForfeitService{
 	public int payForfeit(ForfeitInfo forfeitInfo) {
 		//支付罚金步骤
 		/*
-		 * 1. 得到借阅记录
+		 * 1. 得到租赁记录
 		 * 
-		 * 2. 查看当前的借阅状态
-		 * 		2.1 如果当前状态为未归还(逾期未归还,借阅逾期未归还),则提示读者先去还书再来缴纳罚金,返回-1
+		 * 2. 查看当前的租赁状态
+		 * 		2.1 如果当前状态为未归还(逾期未归还,租赁逾期未归还),则提示读者先去还书再来缴纳罚金,返回-1
 		 * 		2.2 如果当前状态为归还,则继续下一步
 		 * 
 		 * 3. 获得当前的管理员
@@ -90,14 +90,14 @@ public class ForfeitServiceImpl implements ForfeitService{
 		 * 
 		 * 5. 修改罚金记录
 		 */
-		//得到借阅记录
+		//得到租赁记录
 		BorrowInfo info = new BorrowInfo();
 		info.setBorrowId(forfeitInfo.getBorrowId());
 		BorrowInfo borrowInfoById = borrowDao.getBorrowInfoById(info);
-		//查看当前的借阅状态
+		//查看当前的租赁状态
 		int state = borrowInfoById.getState();
 		if(state==1 || state==4){
-			//如果当前状态为未归还(逾期未归还,借阅逾期未归还),则提示读者先去还书再来缴纳罚金,返回-1
+			//如果当前状态为未归还(逾期未归还,租赁逾期未归还),则提示读者先去还书再来缴纳罚金,返回-1
 			return -1;
 		}
 		//得到当前罚金

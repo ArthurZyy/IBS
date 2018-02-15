@@ -101,12 +101,12 @@ function validUpdateReaderType() {
 	var maxNum = $.trim($("#maxNum").val());
 	if(maxNum == ""){
 		 $('#maxNum').parent().addClass("has-error");
-        $('#maxNum').next().text("请输入最大借阅数量");
+        $('#maxNum').next().text("请输入最大租赁数量");
         $("#maxNum").next().show();
         flag = false;
 	}else if(maxNum<=0 || maxNum!=parseInt(maxNum)){
     	$('#maxNum').parent().addClass("has-error");
-        $('#maxNum').next().text("最大借阅数量必须为正整数");
+        $('#maxNum').next().text("最大租赁数量必须为正整数");
         $("#maxNum").next().show();
         flag = false;
 	} else {
@@ -120,12 +120,12 @@ function validUpdateReaderType() {
 	var bday = $.trim($("#bday").val());
 	if(bday == ""){
 		 $('#bday').parent().addClass("has-error");
-        $('#bday').next().text("请输入最大借阅天数");
+        $('#bday').next().text("请输入最大租赁天数");
         $("#bday").next().show();
         flag = false;
 	}else if(bday<=0 || bday!=parseInt(bday)){
     	$('#bday').parent().addClass("has-error");
-        $('#bday').next().text("最大借阅天数必须为正整数");
+        $('#bday').next().text("最大租赁天数必须为正整数");
         $("#bday").next().show();
         flag = false;
 	} else {
@@ -138,7 +138,7 @@ function validUpdateReaderType() {
 	var penalty = $.trim($("#penalty").val());
 	if(penalty == ""){
 		 $('#penalty').parent().addClass("has-error");
-        $('#penalty').next().text("请输入逾期每日罚金");
+        $('#penalty').next().text("请输入逾期每日罚金111");
         $("#penalty").next().show();
         flag = false;
 	}else if(penalty<=0 || penalty!=parseInt(penalty)){
@@ -156,7 +156,7 @@ function validUpdateReaderType() {
 	var renewDays = $.trim($("#renewDays").val());
 	if(renewDays == ""){
 		 $('#renewDays').parent().addClass("has-error");
-        $('#renewDays').next().text("请输入续借天数");
+        $('#renewDays').next().text("请输入续借天数222");
         $("#renewDays").next().show();
         flag = false;
 	}else if(renewDays<=0 || renewDays!=parseInt(renewDays)){

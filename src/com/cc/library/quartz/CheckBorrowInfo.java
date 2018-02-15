@@ -36,7 +36,7 @@ public class CheckBorrowInfo extends QuartzJobBean{
 			e.printStackTrace();
 		}
 		if(!checkBorrowInfo){
-			System.err.println("定时检查借阅表逾期出现了错误!!!");
+			System.err.println("定时检查租赁表逾期出现了错误!!!");
 		}
 		
 	}

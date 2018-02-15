@@ -71,12 +71,12 @@ function validAddReaderType() {
 	var maxNum = $.trim($("#addMaxNum").val());
 	if(maxNum == ""){
 		 $('#addMaxNum').parent().addClass("has-error");
-        $('#addMaxNum').next().text("请输入最大借阅数量");
+        $('#addMaxNum').next().text("请输入最大租赁数量");
         $("#addMaxNum").next().show();
         flag = false;
 	}else if(maxNum<=0 || maxNum!=parseInt(maxNum)){
     	$('#addMaxNum').parent().addClass("has-error");
-        $('#addMaxNum').next().text("最大借阅数量必须为正整数");
+        $('#addMaxNum').next().text("最大租赁数量必须为正整数");
         $("#addMaxNum").next().show();
         flag = false;
 	} else {
@@ -90,12 +90,12 @@ function validAddReaderType() {
 	var bday = $.trim($("#addBday").val());
 	if(bday == ""){
 		 $('#addBday').parent().addClass("has-error");
-        $('#addBday').next().text("请输入最大借阅天数");
+        $('#addBday').next().text("请输入最大租赁天数");
         $("#addBday").next().show();
         flag = false;
 	}else if(bday<=0 || bday!=parseInt(bday)){
     	$('#addBday').parent().addClass("has-error");
-        $('#addBday').next().text("最大借阅天数必须为正整数");
+        $('#addBday').next().text("最大租赁天数必须为正整数");
         $("#addBday").next().show();
         flag = false;
 	} else {

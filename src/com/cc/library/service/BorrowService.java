@@ -13,7 +13,7 @@ public interface BorrowService {
 	public BorrowInfo getBorrowInfoById(BorrowInfo info);
 
 	/**
-	 * 返回借阅状态码
+	 * 返回租赁状态码
 	 * @param info
 	 * @return
 	 */

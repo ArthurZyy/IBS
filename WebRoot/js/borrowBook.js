@@ -12,23 +12,23 @@ $(function () {
 				params: postdata,
 	    		callback:function(data) {
 					if (data==1) {
-						showInfo("借阅成功");	
+						showInfo("租赁成功");	
 
 	                }else if (data==-1) {
 						showInfo("密码错误");	
 					}else if(data==-2){
-						showInfo("借阅数量已达上限");
+						showInfo("租赁数量已达上限");
 
 					}else if(data==-3){
 						showInfo("请先缴纳未缴纳的罚金");
 					}else if(data==-4){
-						showInfo("该图书为馆内最后一本,无法借阅");
+						showInfo("该图书为馆内最后一本,无法租赁");
 					}else if(data==2){
 						showInfo("读者证件号有误,请重试");
 					}else if(data==3){
 						showInfo("图书ISBN号码有误,请重试");
 					}else{
-						showInfo("借阅失败");
+						showInfo("租赁失败");
 					}			
 				}
 			}

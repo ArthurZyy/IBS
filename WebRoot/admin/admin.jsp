@@ -69,14 +69,14 @@
                         <a href="${pageContext.request.contextPath}/admin/bookTypeManageAction_findBookTypeByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 图书分类管理</a>
                     </li>
                     <li>
-                        <a href="${pageContext.request.contextPath}/admin/borrowManageAction_findBorrowInfoByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 图书借阅</a>
+                        <a href="${pageContext.request.contextPath}/admin/borrowManageAction_findBorrowInfoByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 图书租赁</a>
                     </li>
                     <li>
                         <a href="${pageContext.request.contextPath}/admin/backManageAction_findBackInfoByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 图书归还</a>
                     </li>
                     
                     <li>
-                        <a href="${pageContext.request.contextPath}/admin/borrowSearchAction_findBackInfoByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 借阅查询</a>
+                        <a href="${pageContext.request.contextPath}/admin/borrowSearchAction_findBackInfoByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 租赁查询</a>
                     </li>
                      <li>
                         <a href="${pageContext.request.contextPath}/admin/forfeitManageAction_findForfeitInfoByPage.action"><i class="glyphicon glyphicon-chevron-right"></i>逾期处理</a>
@@ -145,12 +145,12 @@
                     <div class="col-md-6">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <div class="text-muted bootstrap-admin-box-title">图书借阅</div>
+                                <div class="text-muted bootstrap-admin-box-title">图书租赁</div>
                             </div>
                             <div class="bootstrap-admin-panel-content">
                                 <ul>
-                                    <li>根据学号、图书编号借阅图书</li>
-                                    <li>展示此学号的借阅信息</li>
+                                    <li>根据学号、图书编号租赁图书</li>
+                                    <li>展示此学号的租赁信息</li>
                                 </ul>
                             </div>
                         </div>
@@ -163,7 +163,7 @@
                             <div class="bootstrap-admin-panel-content">
                                 <ul>
                                     <li>根据学号、图书编号归还图书</li>
-                                    <li>展示此学号的借阅信息</li>
+                                    <li>展示此学号的租赁信息</li>
                                 </ul>
                             </div>
                         </div>
@@ -173,11 +173,11 @@
                     <div class="col-md-6">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <div class="text-muted bootstrap-admin-box-title">借阅查询</div>
+                                <div class="text-muted bootstrap-admin-box-title">租赁查询</div>
                             </div>
                             <div class="bootstrap-admin-panel-content">
                                 <ul>
-                                    <li>展示所有学生的图书借阅信息</li>
+                                    <li>展示所有学生的图书租赁信息</li>
                                     <li>可根据图书编号、图书名称、学号、姓名进行查询</li>
                                 </ul>
                             </div>

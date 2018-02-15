@@ -8,7 +8,7 @@ public class Authorization implements Serializable{
 	private Integer readerSet;	//读者设置权限
 	private Integer bookSet;	//图书设置权限
 	private Integer typeSet;	//图书分类设置权限
-	private Integer borrowSet;	//借阅设置权限
+	private Integer borrowSet;	//租赁设置权限
 	private Integer backSet;	//归还设置权限
 	private Integer forfeitSet;	//逾期设置权限
 	private Integer superSet;	//超级管理权限

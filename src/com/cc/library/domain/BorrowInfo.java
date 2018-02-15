@@ -5,16 +5,16 @@ import java.util.Date;
 import java.util.Set;
 
 /**
- * 借阅信息类
+ * 租赁信息类
  * @author c
  *
  */
 public class BorrowInfo implements Serializable{
 
-	private Integer borrowId;	//借阅编号
-	private Book book;	//借阅书籍
-	private Reader reader;	//借阅读者
-	private Date borrowDate;	//借阅日期
+	private Integer borrowId;	//租赁编号
+	private Book book;	//租赁书籍
+	private Reader reader;	//租赁读者
+	private Date borrowDate;	//租赁日期
 	private Admin admin;	//操作员
 	private Date endDate;	//截止日期
 	private Double penalty;	//每日罚金

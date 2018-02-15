@@ -66,41 +66,41 @@ public class BorrowServiceImpl implements BorrowService{
 	@Override
 	public int addBorrow(BorrowInfo info) {
 		/*
-		 * 1. 得到借阅的读者
+		 * 1. 得到租赁的读者
 		 * 
 		 * 2. 查看读者输入的密码是否匹配
 		 * 		2.1 如果不匹配提示 密码错误
 		 * 		2.2 如果匹配,执行第3步骤
 		 * 
-		 * 3. 查看该读者的借阅信息
-		 * 		3.1 查看借阅信息的条数
-		 * 		3.2 查看该读者的类型得出该读者的最大借阅数量
-		 * 		3.3 匹配借阅的数量是否小于最大借阅量
-		 * 			3.3.1 小于,则可以借阅
-		 * 			3.3.2 大于,则不可以借阅,直接返回借阅数量已超过
+		 * 3. 查看该读者的租赁信息
+		 * 		3.1 查看租赁信息的条数
+		 * 		3.2 查看该读者的类型得出该读者的最大租赁数量
+		 * 		3.3 匹配租赁的数量是否小于最大租赁量
+		 * 			3.3.1 小于,则可以租赁
+		 * 			3.3.2 大于,则不可以租赁,直接返回租赁数量已超过
 		 * 		3.4 查看读者的罚款信息,是否有未缴纳的罚款
 		 * 			3.4.1 如果没有,继续第3的操作步骤
 		 * 			3.4.2 如果有,直接返回有尚未缴纳的罚金
 		 * 
-		 * 4. 查看借阅的书籍
-		 * 		4.1 查看该书籍的在馆数量是否大于1,,如果为1则不能借阅,必须留在馆内浏览
+		 * 4. 查看租赁的书籍
+		 * 		4.1 查看该书籍的在馆数量是否大于1,,如果为1则不能租赁,必须留在馆内浏览
 		 * 			4.1.1 如果大于1,进入第4操作步骤
-		 * 			4.1.2 如果小于等于1,提示该图书为馆内最后一本,无法借阅
+		 * 			4.1.2 如果小于等于1,提示该图书为馆内最后一本,无法租赁
 		 * 
-		 * 5. 处理借阅信息
-		 * 		5.1 得到该读者的最大借阅天数,和每日罚金
+		 * 5. 处理租赁信息
+		 * 		5.1 得到该读者的最大租赁天数,和每日罚金
 		 * 			5.1.1 获得当前时间
-		 * 			5.1.2 根据最大借阅天数,计算出截止日期
-		 * 			5.1.3 为借阅信息设置每日的罚金金额
-		 * 		5.2 获得该读者的信息,为借阅信息设置读者信息
-		 * 		5.3 获得图书信息,为借阅信息设置图书信息
-		 * 		5.4 获得管理员信息,为借阅信息设置操作的管理员信息
+		 * 			5.1.2 根据最大租赁天数,计算出截止日期
+		 * 			5.1.3 为租赁信息设置每日的罚金金额
+		 * 		5.2 获得该读者的信息,为租赁信息设置读者信息
+		 * 		5.3 获得图书信息,为租赁信息设置图书信息
+		 * 		5.4 获得管理员信息,为租赁信息设置操作的管理员信息
 		 * 
-		 * 6. 存储借阅信息
+		 * 6. 存储租赁信息
 		 * 
 		 * 
 		 * 
-		 * 7. 借阅的书籍的在馆数量需要减少
+		 * 7. 租赁的书籍的在馆数量需要减少
 		 * 
 		 * 8. 生成归还记录
 		 * 
@@ -108,7 +108,7 @@ public class BorrowServiceImpl implements BorrowService{
 		
 		//得到密码
 		String pwd = info.getReader().getPwd();
-		//1. 得到借阅的读者
+		//1. 得到租赁的读者
 		Reader reader = readerDao.getReaderBypaperNO(info.getReader());
 		
 		//先检查属于的图书ISBN码和读者的证件号是否正确存在
@@ -125,13 +125,13 @@ public class BorrowServiceImpl implements BorrowService{
 		if(!reader.getPwd().equals(pwd)){
 			return -1;//返回-1表示密码错误
 		}
-		//3. 查看该读者的借阅信息
+		//3. 查看该读者的租赁信息
 		List<BorrowInfo> readerInfos = borrowDao.getNoBackBorrowInfoByReader(reader);///查询的应该是未归还的记录
-		//查看借阅信息的条数
-		//查看该读者的类型得出该读者的最大借阅数量
-		// 匹配借阅的数量是否小于最大借阅量
+		//查看租赁信息的条数
+		//查看该读者的类型得出该读者的最大租赁数量
+		// 匹配租赁的数量是否小于最大租赁量
 		if(readerInfos!=null && readerInfos.size()>=reader.getReaderType().getMaxNum()){
-			return -2;	//返回借阅数量已超过
+			return -2;	//返回租赁数量已超过
 		}
 		// 查看读者的罚款信息,是否有未缴纳的罚款
 		List<ForfeitInfo> list = forfeitDao.getForfeitByReader(reader);
@@ -140,15 +140,15 @@ public class BorrowServiceImpl implements BorrowService{
 				return -3;//尚未缴纳的罚金
 			}
 		}
-		//4. 查看借阅的书籍
-		// 查看该书籍的在馆数量是否大于1,,如果为1则不能借阅,必须留在馆内浏览
+		//4. 查看租赁的书籍
+		// 查看该书籍的在馆数量是否大于1,,如果为1则不能租赁,必须留在馆内浏览
 		Book bookByISBN = bookDao.getBookByISBN(info.getBook());
 		if(bookByISBN.getCurrentNum()<=1){
-			return -4;	//该图书为馆内最后一本,无法借阅
+			return -4;	//该图书为馆内最后一本,无法租赁
 		}
 		
-		//5. 处理借阅信息
-		//得到该读者的最大借阅天数,和每日罚金
+		//5. 处理租赁信息
+		//得到该读者的最大租赁天数,和每日罚金
 		int maxDay = reader.getReaderType().getBday();//可借天数
 		double penalty = reader.getReaderType().getPenalty();//每日罚金
 		
@@ -159,10 +159,10 @@ public class BorrowServiceImpl implements BorrowService{
 		calendar.setTime(borrowDate);
 		calendar.add(Calendar.DAY_OF_MONTH, +maxDay);//+maxDay今天的时间加maxDay天
 		
-		// 根据最大借阅天数,计算出截止日期
+		// 根据最大租赁天数,计算出截止日期
 		Date endDate = calendar.getTime();
 		
-		//获得该读者的信息,为借阅信息设置读者信息
+		//获得该读者的信息,为租赁信息设置读者信息
 		BorrowInfo borrowInfo = new BorrowInfo();
 		borrowInfo.setReader(reader);
 		borrowInfo.setAdmin(info.getAdmin());
@@ -191,33 +191,33 @@ public class BorrowServiceImpl implements BorrowService{
 
 	@Override
 	public boolean checkBorrowInfo() {
-		// 检查借阅表是否有逾期
+		// 检查租赁表是否有逾期
 		//主要步骤
 		/*
-		 *	1.得到所有的未归还的借阅记录(包括未归还,逾期未归还,续借未归还,续借逾期未归还)
+		 *	1.得到所有的未归还的租赁记录(包括未归还,逾期未归还,续借未归还,续借逾期未归还)
 		 *
-		 * 	2.遍历所有的未归还的借阅记录(包括未归还,逾期为归还,续借为归还,续借逾期未归还)
+		 * 	2.遍历所有的未归还的租赁记录(包括未归还,逾期为归还,续借为归还,续借逾期未归还)
 		 * 
-		 * 	3.查看当前时间和借阅的截止的时间的大小
+		 * 	3.查看当前时间和租赁的截止的时间的大小
 		 *		3.1 如果小于,直接跳过
 		 *		3.2如果大于则需要进行逾期处理的,进行第4步操作
 		 *
 		 *	4.用当前时间减去截止时间得到逾期的天数
 		 *
-		 *	5.为当前借阅记录设置逾期天数,并进行数据库修改
+		 *	5.为当前租赁记录设置逾期天数,并进行数据库修改
 		 *
 		 *	6.需要生成罚金记录
-		 *		6.1 得到当前借阅记录的罚金金额,和当前的逾期天数进行相乘,得到罚金金额
-		 *		6.2 将当前借阅记录的id和罚金的金额设置进新生成的罚金记录
+		 *		6.1 得到当前租赁记录的罚金金额,和当前的逾期天数进行相乘,得到罚金金额
+		 *		6.2 将当前租赁记录的id和罚金的金额设置进新生成的罚金记录
 		 *
-		 *	7.设置当前借阅记录的状态
+		 *	7.设置当前租赁记录的状态
 		 *		7.1 如果是未归还，则改为逾期未归还
 		 *		7.2如果是续借未归还，则改为续借逾期未归还
 		 *		7.3如果是逾期未归,则不改变
 		 *		7.4如果是续借逾期不归还,则不改变
 		 * 
 		 */
-		//得到所有的未归还的借阅记录(包括未归还,逾期为归还,续借为归还,续借逾期不归还)
+		//得到所有的未归还的租赁记录(包括未归还,逾期为归还,续借为归还,续借逾期不归还)
 		List<BorrowInfo> borrowInfos = borrowDao.getBorrowInfoByNoBackState();
 		if(borrowInfos!=null){
 			for (BorrowInfo borrowInfo : borrowInfos) {
@@ -228,9 +228,9 @@ public class BorrowServiceImpl implements BorrowService{
 					Double days =Math.floor((time2-time1)/(24*60*60*1000));
 					//用当前时间减去截止时间得到逾期的天数
 					int day = days.intValue();
-					//为当前借阅记录设置逾期天数,并进行数据库修改
+					//为当前租赁记录设置逾期天数,并进行数据库修改
 					borrowInfo.setOverday(day);
-					//设置当前借阅记录的状态
+					//设置当前租赁记录的状态
 					if(borrowInfo.getState()==0){
 						//如果是未归还，则改为逾期未归还
 						borrowInfo.setState(1);
@@ -243,9 +243,9 @@ public class BorrowServiceImpl implements BorrowService{
 					ForfeitInfo forfeitInfo = new ForfeitInfo();
 					forfeitInfo.setBorrowId(borrowInfo.getBorrowId());
 					forfeitInfo.setBorrowInfo(borrowInfo);
-					// 得到当前借阅记录的罚金金额,和当前的逾期天数进行相乘,得到罚金金额
+					// 得到当前租赁记录的罚金金额,和当前的逾期天数进行相乘,得到罚金金额
 					double pay = borrowInfo.getPenalty() * day;
-					//将当前借阅记录的id和罚金的金额设置进新生成的罚金记录
+					//将当前租赁记录的id和罚金的金额设置进新生成的罚金记录
 					forfeitInfo.setForfeit(pay);
 					//生成的罚金记录
 					boolean flag = forfeitDao.addForfeitInfo(forfeitInfo);
@@ -264,16 +264,16 @@ public class BorrowServiceImpl implements BorrowService{
 	public int renewBook(BorrowInfo borrowInfo) {
 		//续借步骤：
 		/*
-		 * 1. 得到借阅的记录
+		 * 1. 得到租赁的记录
 		 * 
-		 * 2. 得到借阅的记录的状态
+		 * 2. 得到租赁的记录的状态
 		 * 		2.1 如果已经是续借状态(包括续借未归还,续借逾期未归还),则返回已经续借过了,返回-2
 		 * 		2.2 如果是归还状态(包括归还,续借归还),则返回该书已还,无法续借,返回-1
 		 *		2.3 如果都不是以上情况,则进行下一步。
 		 * 
-		 * 3. 得到借阅的读者
+		 * 3. 得到租赁的读者
 		 * 
-		 * 4. 得到借阅的读者类型
+		 * 4. 得到租赁的读者类型
 		 * 
 		 * 5. 得到可续借的天数
 		 * 
@@ -281,15 +281,15 @@ public class BorrowServiceImpl implements BorrowService{
 		 * 		6.1 如果叠加后的时候比当前时间小,则返回你已超续借期了,无法进行续借,提示读者快去还书和缴纳罚金  返回-3
 		 * 		6.2如果大于当前时间进行下一步
 		 * 
-		 * 7. 得到当前借阅记录的状态
-		 * 		7.1 如果当前记录为逾期未归还,则需要取消当前借阅记录的罚金记录,并将该记录的状态设置为续借未归还
+		 * 7. 得到当前租赁记录的状态
+		 * 		7.1 如果当前记录为逾期未归还,则需要取消当前租赁记录的罚金记录,并将该记录的状态设置为续借未归还
 		 * 		7.2 如果为未归还状态,直接将当前状态设置为续借未归还
 		 * 
-		 * 8. 为当前借阅记录进行设置,设置之后重新update该记录 返回1
+		 * 8. 为当前租赁记录进行设置,设置之后重新update该记录 返回1
 		 */
-		//得到借阅的记录
+		//得到租赁的记录
 		BorrowInfo borrowInfoById = borrowDao.getBorrowInfoById(borrowInfo);
-		//得到借阅的记录的状态
+		//得到租赁的记录的状态
 		Integer state = borrowInfoById.getState();
 		if(state==3 || state==4){
 			//如果已经是续借状态(包括续借未归还,续借逾期未归还),则返回已经续借过了,返回-2
@@ -314,8 +314,8 @@ public class BorrowServiceImpl implements BorrowService{
 			return -3;
 		}
 		
-		//得到当前借阅记录的状态
-		//如果当前记录为逾期未归还,则需要取消当前借阅记录的罚金记录,并将该记录的状态设置为续借未归还
+		//得到当前租赁记录的状态
+		//如果当前记录为逾期未归还,则需要取消当前租赁记录的罚金记录,并将该记录的状态设置为续借未归还
 		if(state==1){
 			BackInfo backInfo = new BackInfo();
 			backInfo.setBorrowId(borrowInfoById.getBorrowId());
@@ -327,7 +327,7 @@ public class BorrowServiceImpl implements BorrowService{
 		}
 		//将当前状态设置为续借未归还
 		borrowInfoById.setState(3);
-		//为当前借阅记录进行设置,设置之后重新update该记录 返回1
+		//为当前租赁记录进行设置,设置之后重新update该记录 返回1
 		BorrowInfo updateBorrowInfo = borrowDao.updateBorrowInfo(borrowInfoById);
 		if(borrowInfo!=null){
 			return 1;
