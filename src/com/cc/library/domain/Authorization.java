@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Authorization implements Serializable{
 	private Integer aid;	//管理员id
-	private Integer sysSet;	//系统设置权限
+	private Integer sysSet;	//读者分类管理权限
 	private Integer readerSet;	//读者设置权限
 	private Integer bookSet;	//图书设置权限
 	private Integer typeSet;	//图书分类设置权限

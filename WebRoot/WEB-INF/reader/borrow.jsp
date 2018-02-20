@@ -32,63 +32,61 @@
 
 
 <body class="bootstrap-admin-with-small-navbar">
-    <nav class="navbar navbar-inverse navbar-fixed-top bootstrap-admin-navbar bootstrap-admin-navbar-under-small" role="navigation">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="collapse navbar-collapse main-navbar-collapse">
-                        <a class="navbar-brand" href="${pageContext.request.contextPath}/reader.jsp"><strong>图书租赁系统</strong></a>
-                        <ul class="nav navbar-nav navbar-right">
-                         <s:if test="#session.reader!=null"><!-- 判断是否已经登录 -->
-                            <li class="dropdown">
-                                <a href="#" role="button" class="dropdown-toggle" data-hover="dropdown"> <i class="glyphicon glyphicon-user"></i> 欢迎您，<s:property value="#session.reader.name"/> <i class="caret"></i></a>
-                            
-                                 <ul class="dropdown-menu">
-                                 <li><a href="#updateinfo" data-toggle="modal">个人资料</a></li>
-                                      <li role="presentation" class="divider"></li>
-                                    <li><a href="#updatepwd" data-toggle="modal">修改密码</a></li>
-                                     <li role="presentation" class="divider"></li>
-                                  <li><a href="${pageContext.request.contextPath}/readerLoginAction_logout.action">退出</a></li>
-                                </ul>
-                                
-                            </li>
-                             </s:if>
-	                        <s:else><!-- 如果未登录，出现登录按钮 -->
-	                        	<button type="button" class="btn btn-default btn-sm "  id="btn_login" style="margin: 10" data-dismiss="modal">登录</button>
-	                        </s:else>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <nav
+		class="navbar navbar-inverse navbar-fixed-top bootstrap-admin-navbar bootstrap-admin-navbar-under-small"
+		role="navigation">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand"
+				href="${pageContext.request.contextPath}/reader.jsp"><i
+				class="glyphicon glyphicon-fire"></i> <strong>图书租赁系统</strong></a>
+		</div>
+		<div class="collapse navbar-collapse"
+			id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li><a
+					href="${pageContext.request.contextPath}/bookAction_findBookByPage.action">图书查询</a></li>
+				<s:if test="#session.reader!=null">
+					<!-- 判断是否登录 -->
+					<li><a
+						href="${pageContext.request.contextPath}/reader/borrowAction_findMyBorrowInfoByPage.action">租赁信息</a></li>
+				</s:if>
+
+				<s:if test="#session.reader!=null">
+					<!-- 判断是否登录 -->
+					<li><a
+						href="${pageContext.request.contextPath}/reader/forfeitAction_findMyForfeitInfoByPage.action">逾期信息</a></li>
+				</s:if>
+				<s:if test="#session.reader!=null">
+					<!-- 判断是否已经登录 -->
+					<li class="dropdown"><a href="#" role="button"
+						class="dropdown-toggle" data-hover="dropdown"> <i
+							class="glyphicon glyphicon-user"></i> <s:property
+								value="#session.reader.name" /> <i class="caret"></i></a>
+
+						<ul class="dropdown-menu">
+							<li><a href="#updateinfo" data-toggle="modal">个人资料</a></li>
+							<li role="presentation" class="divider"></li>
+							<li><a href="#updatepwd" data-toggle="modal">修改密码</a></li>
+							<li role="presentation" class="divider"></li>
+							<li><a
+								href="${pageContext.request.contextPath}/readerLoginAction_logout.action">退出</a></li>
+						</ul></li>
+				</s:if>
+				<s:else>
+					<!-- 如果未登录，出现登录按钮 -->
+					<button type="button" class="btn btn-default btn-sm "
+						id="btn_login" style="margin: 10" data-dismiss="modal">登录</button>
+				</s:else>
+			</ul>
+		</div>
+	</div>
+	</nav>
 
     <div class="container">
         <!-- left, vertical navbar & content -->
          <div class="row">
-            <!-- left, vertical navbar -->
-           <div class="col-md-2 bootstrap-admin-col-left">
-            <ul class="nav navbar-collapse collapse bootstrap-admin-navbar-side">
-                <li>
-                    <a href="${pageContext.request.contextPath}/bookAction_findBookByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 图书查询</a>
-                </li>
-                <s:if test="#session.reader!=null"><!-- 判断是否登录 -->
-	                <li class="active">
-	                    <a href="${pageContext.request.contextPath}/reader/borrowAction_findMyBorrowInfoByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 租赁信息</a>
-	                </li>
-                </s:if>
-                <s:if test="#session.reader!=null"><!-- 判断是否登录 -->
-	                <li>
-	                    <a href="${pageContext.request.contextPath}/reader/forfeitAction_findMyForfeitInfoByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 逾期信息</a>
-	                </li>
-                </s:if>
-                
-                    
-                
-            </ul>
-        </div>
-
-           <!-- content -->
+            <!-- content -->
              <div class="col-md-10">
             <div class="row">
                 <div class="col-lg-12">
@@ -117,7 +115,7 @@
                                     
                                     
                                     <div class="col-lg-2 form-group">
-                                        <button type="submit" class="btn btn-primary" id="btn_borrow">查询</button>
+                                        <button type="submit" class="btn btn-default" id="btn_borrow">查询</button>
                                     </div>
                                 </div>
                             </form>
@@ -127,7 +125,7 @@
             </div>
                 <div class="row">
                     <div class="col-lg-12">
-                        <table id="data_list" class="table table-hover table-bordered" cellspacing="0" width="100%">
+                        <table id="data_list" class="table table-striped table-hover" cellspacing="0" width="100%">
                             <thead>
                             <tr>
                             	 <th>租赁编号</th>
@@ -154,7 +152,7 @@
 	                                <td><s:date name="#back.backDate" format="yyyy-MM-dd" /></td>
 	                                <td><s:date name="#back.borrowInfo.endDate" format="yyyy-MM-dd" /></td>
 	                                <td>         
-	                                	<button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#findBackModal" onclick="getBackInfoById(<s:property value="#back.borrowId"/>)">查看</button>
+	                                	<button type="button" class="btn btn-link" data-toggle="modal" data-target="#findBackModal" onclick="getBackInfoById(<s:property value="#back.borrowId"/>)">查看</button>
 	                               	</td>                                              
                           	  </tbody>
                             </s:iterator>
@@ -414,7 +412,7 @@
 							<div class="modal-footer">
 								<button type="button" class="btn btn-default" data-dismiss="modal">关闭
 								</button>
-								<button type="button" class="btn btn-primary" id="update_readerPwd">
+								<button type="button" class="btn btn-default" id="update_readerPwd">
 									修改
 								</button>
 							</div>
@@ -482,7 +480,7 @@
 							<div class="modal-footer">
 								<button type="button" class="btn btn-default" data-dismiss="modal">关闭
 								</button>
-								<button type="button" class="btn btn-primary" id="reader_updateInfo">
+								<button type="button" class="btn btn-default" id="reader_updateInfo">
 									修改
 								</button>
 							</div>

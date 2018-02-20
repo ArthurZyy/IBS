@@ -50,7 +50,7 @@
                     <input type="password" class="form-control" id="password" placeholder="密码"/>
                     <label class="control-label" for="username" style="display:none;"></label>
                 </div>
-                <input type="button" class="btn btn-lg btn-primary" id="login_submit" value="登&nbsp;&nbsp;&nbsp;&nbsp;录"/>
+                <input type="button" class="btn btn-lg btn-default" id="login_submit" value="登&nbsp;&nbsp;&nbsp;&nbsp;录"/>
             </form>
         </div>
     </div>

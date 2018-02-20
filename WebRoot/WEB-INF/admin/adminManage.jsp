@@ -34,73 +34,81 @@
 
 
 <body class="bootstrap-admin-with-small-navbar">
-    <nav class="navbar navbar-inverse navbar-fixed-top bootstrap-admin-navbar bootstrap-admin-navbar-under-small" role="navigation">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="collapse navbar-collapse main-navbar-collapse">
-                        <a class="navbar-brand" href="${pageContext.request.contextPath}/admin/admin.jsp"><strong>图书租赁系统</strong></a>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="dropdown">
-                                <a href="#" role="button" class="dropdown-toggle" data-hover="dropdown"> <i class="glyphicon glyphicon-user"></i> 欢迎您， <s:property value="#session.admin.name"/> <i class="caret"></i></a>
-                            
-                                 <ul class="dropdown-menu">
-                                 <li><a href="#updateinfo" data-toggle="modal">个人资料</a></li>
-                                      <li role="presentation" class="divider"></li>
-                                    <li><a href="#updatepwd" data-toggle="modal">修改密码</a></li>
-                                     <li role="presentation" class="divider"></li>
-                                    <li><a href="${pageContext.request.contextPath}/adminLoginAction_logout.action">退出</a></li>
-                                </ul>
-                                
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <nav
+		class="navbar navbar-inverse navbar-fixed-top bootstrap-admin-navbar bootstrap-admin-navbar-under-small"
+		role="navigation">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand"
+				href="${pageContext.request.contextPath}/admin/admin.jsp"><i
+				class="glyphicon glyphicon-fire"></i> <strong>图书租赁系统</strong></a>
+		</div>
+		<div class="collapse navbar-collapse"
+			id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li class="dropdown"><a href="#" role="button"
+					class="dropdown-toggle" data-hover="dropdown">图书管理 <span
+						class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a
+							href="${pageContext.request.contextPath}/admin/bookManageAction_findBookByPage.action">图书管理</a></li>
+						<li role="presentation" class="divider"></li>
+						<li><a
+							href="${pageContext.request.contextPath}/admin/bookTypeManageAction_findBookTypeByPage.action">图书分类管理</a></li>
+					</ul></li>
+				<li class="dropdown"><a href="#" role="button"
+					class="dropdown-toggle" data-hover="dropdown">租赁管理 <span
+						class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a
+							href="${pageContext.request.contextPath}/admin/borrowManageAction_findBorrowInfoByPage.action">图书租赁</a></li>
+						<li role="presentation" class="divider"></li>
+						<li><a
+							href="${pageContext.request.contextPath}/admin/backManageAction_findBackInfoByPage.action">图书归还</a></li>
+						<li role="presentation" class="divider"></li>
+						<li><a
+							href="${pageContext.request.contextPath}/admin/borrowSearchAction_findBackInfoByPage.action">租赁查询</a></li>
+						<li role="presentation" class="divider"></li>
+						<li><a
+							href="${pageContext.request.contextPath}/admin/forfeitManageAction_findForfeitInfoByPage.action">逾期处理</a></li>
+					</ul></li>
+				<li class="dropdown"><a href="#" role="button"
+					class="dropdown-toggle" data-hover="dropdown">读者管理 <span
+						class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a
+							href="${pageContext.request.contextPath}/admin/readerManageAction_findReaderByPage.action">读者管理</a></li>
+						<li role="presentation" class="divider"></li>
+						<li><a
+							href="${pageContext.request.contextPath}/admin/readerTypeManageAction_getAllReaderType.action">读者分类管理</a></li>
+					</ul></li>
+				<s:if test="#session.admin.authorization.superSet==1">
+					<!-- 对超级管理员和普通管理员进行权限区分 -->
+					<li><a
+						href="${pageContext.request.contextPath}/admin/adminManageAction_findAdminByPage.action">管理员管理</a></li>
+				</s:if>
+				<li class="dropdown"><a href="#" role="button"
+					class="dropdown-toggle" data-hover="dropdown"> <i
+						class="glyphicon glyphicon-user"></i> <s:property
+							value="#session.admin.name" /> <i class="caret"></i></a>
+					<ul class="dropdown-menu">
+						<li><a href="#updateinfo" data-toggle="modal">个人资料</a></li>
+						<li role="presentation" class="divider"></li>
+						<li><a href="#updatepwd" data-toggle="modal">修改密码</a></li>
+						<li role="presentation" class="divider"></li>
+						<!-- href="#identifier"  来指定要切换的特定的模态框（带有 id="identifier"）。-->
+						<li><a
+							href="${pageContext.request.contextPath}/adminLoginAction_logout.action">退出</a></li>
+					</ul></li>
+			</ul>
+		</div>
+	</div>
+	</nav>
 
     <div class="container">
         <!-- left, vertical navbar & content -->
         <div class="row">
-            <!-- left, vertical navbar -->
-            <div class="col-md-2 bootstrap-admin-col-left">
-                <ul class="nav navbar-collapse collapse bootstrap-admin-navbar-side">
-                    <li>
-                        <a href="${pageContext.request.contextPath}/admin/bookManageAction_findBookByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 图书管理</a>
-                    </li>
-                    <li>
-                        <a href="${pageContext.request.contextPath}/admin/bookTypeManageAction_findBookTypeByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 图书分类管理</a>
-                    </li>
-                    <li >
-                        <a href="${pageContext.request.contextPath}/admin/borrowManageAction_findBorrowInfoByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 图书租赁</a>
-                    </li>
-                    <li>
-                        <a href="${pageContext.request.contextPath}/admin/backManageAction_findBackInfoByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 图书归还</a>
-                    </li>
-                    
-                    <li>
-                        <a href="${pageContext.request.contextPath}/admin/borrowSearchAction_findBackInfoByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 租赁查询</a>
-                    </li>
-                     <li>
-                        <a href="${pageContext.request.contextPath}/admin/forfeitManageAction_findForfeitInfoByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 逾期处理</a>
-                    </li>
-               <s:if test="#session.admin.authorization.superSet==1"><!-- 对超级管理员和普通管理员进行权限区分 -->
-                    <li class="active">
-                        <a href="${pageContext.request.contextPath}/admin/adminManageAction_findAdminByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 管理员管理</a>
-                    </li>
-               </s:if>
-                    <li>
-                        <a href="${pageContext.request.contextPath}/admin/readerManageAction_findReaderByPage.action"><i class="glyphicon glyphicon-chevron-right"></i> 读者管理</a>
-                    </li>
-                     <li>
-                        <a href="${pageContext.request.contextPath}/admin/readerTypeManageAction_getAllReaderType.action"><i class="glyphicon glyphicon-chevron-right"></i> 系统设置</a>
-                    </li>
-                   
-                </ul>
-            </div>
-
-           <!-- content -->
+            <!-- content -->
             <div class="col-md-10">
                 <div class="row">
                     <div class="col-lg-12">
@@ -125,8 +133,8 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-2 form-group">
-                                        <button type="submit" class="btn btn-primary" id="btn_query" onclick="query()">查询</button>
-                                        <button type="button" class="btn btn-primary" id="btn_add" data-toggle="modal" data-target="#addModal">添加</button>          
+                                        <button type="submit" class="btn btn-default" id="btn_query" onclick="query()">查询</button>
+                                        <button type="button" class="btn btn-default" id="btn_add" data-toggle="modal" data-target="#addModal">添加</button>          
                                     </div>
                                 </form>
                             </div>
@@ -135,7 +143,7 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
-                        <table id="data_list" class="table table-hover table-bordered" cellspacing="0" width="100%">
+                        <table id="data_list" class="table table-striped table-hover" cellspacing="0" width="100%">
                             <thead>
                             <tr>
                                 <th>管理员用户名</th>
@@ -155,9 +163,9 @@
 	                                <td><s:property value="#admin.phone"/></td>
 	                                <td>
 	                                	<s:if test="#admin.authorization.superSet!=1">
-		                                	<button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#updateModal" onclick="updateAdmin(<s:property value="#admin.aid"/>)">修改</button>
-		                                	<button type="button" class="btn btn-danger btn-xs" onclick="deleteAdmin(<s:property value="#admin.aid"/>)">删除</button>
-		                                	<button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#powerModal" onclick="power(<s:property value="#admin.aid"/>)">权限</button>
+		                                	<button type="button" class="btn btn-link" data-toggle="modal" data-target="#updateModal" onclick="updateAdmin(<s:property value="#admin.aid"/>)">修改</button>
+		                                	<button type="button" class="btn btn-link" onclick="deleteAdmin(<s:property value="#admin.aid"/>)">删除</button>
+		                                	<button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#powerModal" onclick="power(<s:property value="#admin.aid"/>)">权限</button>
 	                                	 </s:if>
 	                                	  <s:else>
 	                                	  			超级管理员
@@ -298,7 +306,7 @@
 												<div class="modal-footer">
 													<button type="button" class="btn btn-default" data-dismiss="modal">关闭
 													</button>
-													<button type="button" class="btn btn-primary" id="addAdmin">
+													<button type="button" class="btn btn-default" id="addAdmin">
 														添加
 													</button>
 												</div>
@@ -366,7 +374,7 @@
 												<div class="modal-footer">
 													<button type="button" class="btn btn-default" data-dismiss="modal">关闭
 													</button>
-													<button type="button" class="btn btn-primary" id="updateAdmin">
+													<button type="button" class="btn btn-default" id="updateAdmin">
 														修改
 													</button>
 												</div>
@@ -435,7 +443,7 @@
 							<div class="modal-footer">
 								<button type="button" class="btn btn-default" data-dismiss="modal">关闭
 								</button>
-								<button type="button" class="btn btn-primary" id="update_adminPwd">
+								<button type="button" class="btn btn-default" id="update_adminPwd">
 									修改
 								</button>
 							</div>
@@ -505,7 +513,7 @@
 							<div class="modal-footer">
 								<button type="button" class="btn btn-default" data-dismiss="modal">关闭
 								</button>
-								<button type="button" class="btn btn-primary" id="admin_updateInfo" >
+								<button type="button" class="btn btn-default" id="admin_updateInfo" >
 									修改
 								</button>
 							</div>
@@ -597,7 +605,7 @@
 												</div>
 										</div>
 										<div class="form-group">	
-											<label for="firstname" class="col-sm-3 control-label">系统设置权限</label>
+											<label for="firstname" class="col-sm-3 control-label">读者分类管理权限</label>
 												<div class="col-sm-7">
 													<input type="checkbox" name="power" id="sysSet" value="sysSet">
 												</div>
@@ -610,7 +618,7 @@
 												<div class="modal-footer">
 													<button type="button" class="btn btn-default" data-dismiss="modal">关闭
 													</button>
-													<button type="button" class="btn btn-primary"  onclick="setPower()">
+													<button type="button" class="btn btn-default"  onclick="setPower()">
 														设置
 													</button>
 												</div>
