@@ -15,7 +15,7 @@ public class Reader implements Serializable{
 	private String name;	//真实名称
 	private String pwd;	//密码
 	private String phone;	//联系方式
-	private ReaderType readerType;	//读者类型(学生或者教师)
+	private ReaderType readerType;	//读者类型
     private String email;	//邮箱
     private Admin admin;	//操作管理员
     private String paperNO;	//证件号码

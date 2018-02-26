@@ -14,11 +14,10 @@
 	href="${pageContext.request.contextPath}/css/bootstrap-theme.min.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/bootstrap-admin-theme.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/bootstrap-admin-theme.css">
-<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+
 <script
 	src="${pageContext.request.contextPath}/jQuery/jquery-3.1.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 <script
 	src="${pageContext.request.contextPath}/js/bootstrap-dropdown.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/reader.js"></script>
@@ -27,12 +26,11 @@
 <script src="${pageContext.request.contextPath}/js/readerUpdateInfo.js"></script>
 <script src="${pageContext.request.contextPath}/js/readerUpdatePwd.js"></script>
 
+
 </head>
 
 
 
-<script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 
 
 <body class="bootstrap-admin-with-small-navbar">

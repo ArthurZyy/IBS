@@ -49,7 +49,7 @@ public class ReaderLoginAction extends ActionSupport {
 	 * @return 返回登录状态
 	 */
 	public String login(){
-		//学生
+		//会员
 		Reader reader = new Reader();
 		reader.setPaperNO(paperNO);
 		reader.setPwd(Md5Utils.md5(pwd));
